@@ -77,10 +77,19 @@ end
 function PlayerSelectState:render()
     love.graphics.setColor(0, 0, 0, 255)
     love.graphics.setFont(gFonts['large'])
-    love.graphics.printf("Player " .. tostring(self.selectingPlayer), 0, VIRTUAL_HEIGHT / 4,
+    love.graphics.printf("Player " .. tostring(self.selectingPlayer), 0, VIRTUAL_HEIGHT / 4 - 24,
         VIRTUAL_WIDTH, 'center')
 
     love.graphics.setFont(gFonts['medium'])
+    
+    if self.selectingPlayer == 1 then    
+        love.graphics.printf("Use A D W S", 0, VIRTUAL_HEIGHT / 4 + 24,
+            VIRTUAL_WIDTH, 'center')
+    else
+        love.graphics.printf("Use LEFT RIGHT UP DOWN", 0, VIRTUAL_HEIGHT / 4 + 24,
+                VIRTUAL_WIDTH, 'center')
+    end
+    
     love.graphics.printf("Select your color with left and right", 0, VIRTUAL_HEIGHT / 4 + 48,
         VIRTUAL_WIDTH, 'center')
     love.graphics.printf("ENTER to continue", 0, VIRTUAL_HEIGHT / 3 + 48,
