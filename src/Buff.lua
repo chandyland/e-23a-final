@@ -36,10 +36,11 @@ function Buff:handlePlayerCollision(player)
     self.inPlay = false
     if self.type == "buff" then
         player:increaseSize();
+        gSounds['good_hit']:play()
     else
         player:decreaseSize();
+        gSounds['bad_hit']:play()
     end
-    gSounds['paddle-hit']:play()
 end      
 
 function Buff:update(dt)

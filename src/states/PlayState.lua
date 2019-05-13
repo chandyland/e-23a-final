@@ -59,6 +59,7 @@ function PlayState:update(dt)
                 score2 = self.score2,
                 round = self.round
             })
+            gSounds['win']:play()
         end
     end
     

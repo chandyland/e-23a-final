@@ -34,21 +34,13 @@ function love.load()
     })
 
     gSounds = {
-        ['paddle-hit'] = love.audio.newSource('sounds/paddle_hit.wav'),
-        ['score'] = love.audio.newSource('sounds/score.wav'),
-        ['wall-hit'] = love.audio.newSource('sounds/wall_hit.wav'),
+        ['good_hit'] = love.audio.newSource('sounds/good_hit.wav'),
+        ['bad_hit'] = love.audio.newSource('sounds/bad_hit.wav'),
         ['confirm'] = love.audio.newSource('sounds/confirm.wav'),
         ['select'] = love.audio.newSource('sounds/select.wav'),
         ['no-select'] = love.audio.newSource('sounds/no-select.wav'),
-        ['brick-hit-1'] = love.audio.newSource('sounds/brick-hit-1.wav'),
-        ['brick-hit-2'] = love.audio.newSource('sounds/brick-hit-2.wav'),
-        ['hurt'] = love.audio.newSource('sounds/hurt.wav'),
-        ['victory'] = love.audio.newSource('sounds/victory.wav'),
-        ['recover'] = love.audio.newSource('sounds/recover.wav'),
-        ['high-score'] = love.audio.newSource('sounds/high_score.wav'),
         ['pause'] = love.audio.newSource('sounds/pause.wav'),
-
-        -- ['music'] = love.audio.newSource('sounds/music.wav')
+        ['win'] = love.audio.newSource('sounds/win.wav'),
     }
 
     gStateMachine = StateMachine {
