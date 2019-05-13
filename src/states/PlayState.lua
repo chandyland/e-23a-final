@@ -75,6 +75,8 @@ function PlayState:update(dt)
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
     end
+
+    self:refillObjects()
 end
 
 function PlayState:generateObjects()
@@ -86,12 +88,39 @@ function PlayState:generateObjects()
         ))
     end
 
-    for i = 1, 7 do
+    for i = 1, 10 do
         table.insert(self.objects, Buff(
             'debuff',
             math.random(0, VIRTUAL_WIDTH - 16),
             math.random(0, VIRTUAL_HEIGHT - 16)
         ))
+    end
+end
+
+function PlayState:refillObjects()
+    local inPlayObjects = {}
+
+    for k, object in pairs(self.objects) do
+        if object.inPlay then
+            table.insert(inPlayObjects, object)
+        end
+    end
+
+    if #inPlayObjects < 20 then
+        local randomNum = math.random(1, 4)
+        if (randomNum % 2 == 0) then
+            table.insert(self.objects, Buff(
+                'buff',
+                math.random(0, VIRTUAL_WIDTH - 16),
+                math.random(0, VIRTUAL_HEIGHT - 16)
+            ))
+        else
+            table.insert(self.objects, Buff(
+                'debuff',
+                math.random(0, VIRTUAL_WIDTH - 16),
+                math.random(0, VIRTUAL_HEIGHT - 16)
+            ))
+        end
     end
 end
 
@@ -111,9 +140,4 @@ function PlayState:render()
         love.graphics.setColor(0, 0, 0, 255)
         love.graphics.printf("PAUSED", 0, VIRTUAL_HEIGHT / 2 - 16, VIRTUAL_WIDTH, 'center')
     end
-end
-
-function PlayState:checkVictory()
-
-    return true
 end
